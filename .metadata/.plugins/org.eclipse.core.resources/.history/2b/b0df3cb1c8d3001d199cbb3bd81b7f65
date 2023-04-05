@@ -1,0 +1,17 @@
+package com.pedidos.paq.rest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class PedidosRest {
+	
+	
+	@Autowired
+	private PedidosService pedidosService;
+	
+	
+	
+	
+
+}

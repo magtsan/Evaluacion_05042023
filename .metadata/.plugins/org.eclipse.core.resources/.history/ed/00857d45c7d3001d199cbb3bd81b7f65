@@ -1,0 +1,90 @@
+package com.pedidos.paq.entitys;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "detalle_pedido")
+public class DetallePedido {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id_detalle_pedido;
+	
+	@Column(name = "clave_producto")
+	private String clave_producto;
+	
+	@Column(name = "cantidad")
+	private int cantidad;
+	
+	@Column(name = "costo_unitario")
+	private float costo_unitario;
+	
+	@Column(name = "idpedido")
+	private int idpedido;
+
+	public int getId_detalle_pedido() {
+		return id_detalle_pedido;
+	}
+
+	public void setId_detalle_pedido(int id_detalle_pedido) {
+		this.id_detalle_pedido = id_detalle_pedido;
+	}
+
+	public String getClave_producto() {
+		return clave_producto;
+	}
+
+	public void setClave_producto(String clave_producto) {
+		this.clave_producto = clave_producto;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public float getCosto_unitario() {
+		return costo_unitario;
+	}
+
+	public void setCosto_unitario(float costo_unitario) {
+		this.costo_unitario = costo_unitario;
+	}
+
+	public int getIdpedido() {
+		return idpedido;
+	}
+
+	public void setIdpedido(int idpedido) {
+		this.idpedido = idpedido;
+	}
+
+	public DetallePedido(int id_detalle_pedido, String clave_producto, int cantidad, float costo_unitario,
+			int idpedido) {
+		super();
+		this.id_detalle_pedido = id_detalle_pedido;
+		this.clave_producto = clave_producto;
+		this.cantidad = cantidad;
+		this.costo_unitario = costo_unitario;
+		this.idpedido = idpedido;
+	}
+
+	public DetallePedido() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+	
+
+}

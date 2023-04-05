@@ -1,0 +1,5 @@
+package com.pedidos.paq.rest;
+
+public class PedidosRest {
+
+}

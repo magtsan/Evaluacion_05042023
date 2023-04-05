@@ -1,0 +1,15 @@
+package com.pedidos.paq;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+
+@ComponentScan({ "com.pedidos.repository.*","com.pedidos.paq.*" })
+@SpringBootApplication
+public class PedidosApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PedidosApplication.class, args);
+	}
+
+}

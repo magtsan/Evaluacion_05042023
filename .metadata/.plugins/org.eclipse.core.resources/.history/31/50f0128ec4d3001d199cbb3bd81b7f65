@@ -1,0 +1,13 @@
+package com.pedidos.paq.entitys;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table (name = "pedido")
+public class Pedido {
+	
+	
+	
+
+}

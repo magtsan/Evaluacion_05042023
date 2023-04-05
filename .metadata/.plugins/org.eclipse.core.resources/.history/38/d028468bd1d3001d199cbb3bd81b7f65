@@ -1,0 +1,45 @@
+package com.pedidos.paq.entitys.service;
+
+import java.util.Comparator;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.pedidos.paq.entitys.DetallePedido;
+import com.pedidos.paq.entitys.Pedido;
+import com.pedidos.paq.repository.DetallePedidoRepository;
+import com.pedidos.paq.repository.PedidoRepository;
+
+@Service
+public class PedidosService {
+	
+	@Autowired(required = true)
+	private PedidoRepository pedidoRepository;
+	
+	@Autowired(required = true)
+	private DetallePedidoRepository detallePedidoRepository;
+	
+	
+	public void guardarPedido(Pedido pedido) {
+		
+		pedidoRepository.save(pedido);
+		
+	}
+	
+	public Pedido informacionPedido(int id) {
+		
+		Pedido pedido = pedidoRepository.findById(id).get(); 
+		
+		if (pedido != null)
+		pedido.getListaDetallesPedidos().stream().sorted(Comparator.comparingInt(DetallePedido::getCantidad).reversed());
+		
+		return pedido;
+		
+		
+	}
+	
+	
+	
+	
+
+}

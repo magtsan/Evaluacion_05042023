@@ -1,0 +1,99 @@
+package com.pedidos.paq.entitys.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.pedidos.paq.entitys.DetallePedido;
+import com.pedidos.paq.entitys.Pedido;
+import com.pedidos.paq.repository.DetallePedidoRepository;
+import com.pedidos.paq.repository.PedidoRepository;
+
+@Service
+public class PedidosService {
+	
+	@Autowired(required = true)
+	private PedidoRepository pedidoRepository;
+	
+	@Autowired(required = true)
+	private DetallePedidoRepository detallePedidoRepository;
+	
+	
+	public void guardarPedido(Pedido pedido) {
+		
+		pedidoRepository.save(pedido);
+		
+	}
+	
+	public Pedido informacionPedido(int id) {
+		
+		Pedido pedido = pedidoRepository.findById(id).get(); 
+		
+		if (pedido != null)
+			pedido.setListaDetallesPedidos(pedido.getListaDetallesPedidos().stream().sorted(Comparator.comparingInt(DetallePedido::getCantidad).reversed()).toList());
+			//pedido.setListaDetallesPedidos(this.metodoBurbujasDescList(pedido.getListaDetallesPedidos()));
+			
+		
+		return pedido;
+		
+		
+	}
+	
+	
+	public static int[] metodoBurbujaDesc( int [ ] num )
+    {
+         int i;
+         boolean flag = true;
+         int temp;
+         while ( flag )
+         {
+                flag = false;  
+                for( i=0;  i < num.length -1;  i++ )
+                {
+                       if ( num[ i ] < num[i+1] )
+                       {
+                               temp = num[ i ]; 
+                               num[ i ] = num[ i+1 ];
+                               num[ i+1 ] = temp;
+                              flag = true; 
+                      } 
+                } 
+          } 
+         return num;
+    }	
+	
+	
+	public static List<DetallePedido> metodoBurbujasDescList(List<DetallePedido> listaDetallePedidos){
+		
+        int i;
+        boolean flag = true;
+        DetallePedido temp = new DetallePedido();
+        while ( flag )
+        {
+               flag = false;  
+               for( i=0;  i < listaDetallePedidos.size() -1;  i++ )
+               {
+            	   DetallePedido pedido = listaDetallePedidos.get(i);
+            	   DetallePedido pedidoMasUno = listaDetallePedidos.get(i+1);
+            	   
+                      if ( pedido.getCantidad() < pedidoMasUno.getCantidad() )
+                      {
+                              temp = pedido; 
+                              pedido = pedidoMasUno;
+                              pedidoMasUno = temp;
+                             flag = true; 
+                     } 
+                   
+               } 
+         } 
+		
+		
+		
+		return listaDetallePedidos;
+	}
+	
+	
+	
+
+}

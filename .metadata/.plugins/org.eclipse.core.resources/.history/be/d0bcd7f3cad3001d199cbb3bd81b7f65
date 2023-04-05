@@ -1,0 +1,5 @@
+package com.pedidos.paq.entitys.service;
+
+public class PedidosService {
+
+}

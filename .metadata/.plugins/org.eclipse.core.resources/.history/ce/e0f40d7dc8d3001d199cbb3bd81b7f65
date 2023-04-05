@@ -1,0 +1,27 @@
+package com.pedidos.paq.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.pedidos.paq.entitys.Pedido;
+import com.pedidos.repository.DetallePedidoRepository;
+import com.pedidos.repository.PedidoRepository;
+
+@Service	
+public class PedidosService {
+	
+	@Autowired
+	private DetallePedidoRepository detallePedidoRepository;
+	@Autowired
+	private PedidoRepository pedidoRepository;
+	
+	public void guardarPedido(Pedido pedido) {
+		
+		pedidoRepository.save(pedido);
+		
+	}
+	
+	
+	
+
+}

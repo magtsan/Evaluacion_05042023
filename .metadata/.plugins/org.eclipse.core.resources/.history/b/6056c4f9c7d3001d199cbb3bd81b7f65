@@ -1,0 +1,5 @@
+package com.pedidos.paq.service;
+
+public class PedidosService {
+
+}

@@ -1,0 +1,11 @@
+package com.pedidos.paq.rest;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class PedidosRest {
+	
+	
+	
+
+}
